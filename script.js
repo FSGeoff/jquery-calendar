@@ -1,7 +1,11 @@
 $(document).ready(function () {
+	var currentTime = moment().format("LT");
 	var amBox = $("#am-hours");
-	var pmBox = $("#pm-box");
+	var pmBox = $("#pm-hours");
 	var currentDay = $("#currentDay");
+	var timeBlock = $("#time-block");
+	var eventBox = $("#event-box");
+	console.log(currentTime);
 
 	var hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
@@ -15,14 +19,14 @@ $(document).ready(function () {
 		console.log(amHours);
 
 		// Append to existing
-		$("#am-hours").append(amHours);
+		amBox.append(amHours);
 
-		var event = $("<textarea>");
+		// var event = $("<textarea>");
 
-		event.addClass("add-event");
-		event.attr("id", hours[i]);
+		// event.addClass("add-event");
+		// event.attr("id", hours[i]);
 
-		amHours.append(event);
+		// amHours.append(event);
 	}
 
 	for (let i = 0; i < hours.length; i++) {
@@ -35,13 +39,18 @@ $(document).ready(function () {
 		console.log(pmHours);
 
 		// Append to existing
-		$("#pm-hours").append(pmHours);
+		pmBox.append(pmHours);
 
-		var event = $("<textarea>");
+		// var event = $("<textarea>");
 
-		event.addClass("add-event");
-		event.attr("id", hours[i]);
+		// event.addClass("add-event");
+		// event.attr("id", hours[i]);
 
-		pmHours.append(event);
+		// pmHours.append(event);
 	}
+	amBox.on("click", function () {});
+
+	pmBox.on("click", function () {
+		console.log("pm-box");
+	});
 });

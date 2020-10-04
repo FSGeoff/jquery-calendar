@@ -1,12 +1,14 @@
 $(document).ready(function () {
 	var timeAndDate = moment().calendar();
+	var time = moment().format("LT");
 	var amBox = $("#am-hours");
 	var pmBox = $("#pm-hours");
 	var currentDay = $("#currentDay");
 	var timeBlock = $("#time-block");
 	var eventBox = $("#event-box");
+	var eventBtn = $("#event-btn");
 	console.log(timeAndDate);
-	console.log(window);
+	console.log(time);
 
 	var hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
@@ -31,29 +33,44 @@ $(document).ready(function () {
 	}
 
 	for (let i = 0; i < hours.length; i++) {
-		// Create element
+		// Create div, added content, then appended to pmBox
 		var pmHours = $("<div>");
-		// Attach Content
 		pmHours.addClass("sch-hrs night-hrs");
 		pmHours.attr("value", hours[i]);
 		pmHours.text(hours[i] + "PM");
-
-		// Append to existing
 		pmBox.append(pmHours);
 
+		// Create textarea, added content, then appended to pmBox
 		var event = $("<textarea>");
+		// Create button, add content then append to ...
+		var button = $("<button>");
+		button.css("class", "btn btn-info");
+		button.css("color", "blue");
+		button.css("float", "right");
+		button.text(hours[i]);
+		pmBox.append(button);
+
 		event.css("background-color", "grey");
 		event.css("width", "100%");
 		event.addClass("add-event");
 		event.attr("id", hours[i]);
-
 		pmBox.append(event);
+
+		// // Create button, add content then append to ...
+		// var button = $("<button>");
+		// button.css("class", "btn btn-info");
+		// button.text(hours[i]);
+		// eventBtn.append(button);
 	}
 	amBox.on("click", function () {
-		console.log("am-box");
+		saveEvent();
 	});
 
 	pmBox.on("click", function () {
-		console.log("pm-box");
+		saveEvent();
 	});
+
+	function saveEvent() {
+		console.log("Save event here");
+	}
 });

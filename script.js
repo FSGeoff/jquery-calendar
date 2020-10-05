@@ -4,9 +4,10 @@ $(document).ready(function () {
 	var amBox = $("#event-hours");
 
 	var currentDay = $("#currentDay");
-	var timeBlock = $("#time-block");
+	var currentTime = $("#currentTime");
 
 	currentDay.text(date);
+	currentTime.text(time);
 
 	console.log(date);
 	console.log(time);

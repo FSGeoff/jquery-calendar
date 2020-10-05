@@ -21,28 +21,17 @@ $(document).ready(function () {
 		var amHours = $("<div>");
 		amHours.addClass("sch-hrs day-hrs");
 		amHours.attr("value", hours[i]);
-		amHours.css("height", "60px");
-		amHours.css("padding", "5px");
 		amHours.text(hours[i] + "AM");
 		amBox.append(amHours);
 
 		// Create textarea, added content, then appended to parent
 		var event = $("<textarea>");
-		event.css("background-color", "grey");
-		event.css("width", "100%");
-		event.css("height", "60px");
 		event.addClass("add-event");
-		event.attr("id", "pm" + hours[i]);
+		event.attr("id", "am" + hours[i]);
 		eventDiv.append(event);
-		// Create button, add content then append to parent
 
-		// Create div, added content, then appended to parent
-
+		//Create button, add content, append to parent
 		var button = $("<button>");
-		button.css("class", "btn btn-info");
-		button.css("color", "blue");
-		button.css("float", "right");
-		button.css("height", "60px");
 		button.text("LOCK");
 		lockEventBtn.append(button);
 
@@ -59,22 +48,21 @@ $(document).ready(function () {
 
 		// Create textarea, added content, then appended to parent
 		var event = $("<textarea>");
-		event.css("background-color", "grey");
-		event.css("width", "100%");
 		event.addClass("add-event");
 		event.attr("id", "pm" + hours[i]);
 		eventDiv.append(event);
 
 		// Create button, add content then append to parent
 		var button = $("<button>");
-		button.css("class", "btn btn-info");
-		button.css("color", "blue");
-		button.css("float", "right");
 		button.text("LOCK");
 		lockEventBtn.append(button);
 	}
-	amBox.on("click", function () {
+	lockEventBtn.on("click", function () {
 		saveEvent();
+	});
+
+	eventDiv.on("click", function () {
+		console.log("eventDiv here");
 	});
 
 	function saveEvent() {

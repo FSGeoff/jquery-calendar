@@ -42,10 +42,10 @@ $(document).ready(function () {
 		timeSlot.append(button);
 		$("#time-block").append(timeSlot);
 
-		var hourNow = time.timeNumber;
-		if (hourNow === timeNow) {
+		var hourNow = parseInt(time.timeNumber);
+		if (hourNow === parseInt(timeNow)) {
 			textContent.addClass("present");
-		} else if (hourNow <= timeNow) {
+		} else if (hourNow <= parseInt(timeNow)) {
 			textContent.addClass("past");
 		} else {
 			textContent.addClass("future");

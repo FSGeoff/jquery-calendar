@@ -1,13 +1,14 @@
 $(document).ready(function () {
-	var timeAndDate = moment().calendar();
+	var date = moment().format("L");
 	var time = moment().format("LT");
-	var amBox = $("#am-hours");
-	var pmBox = $("#pm-hours");
+	var amBox = $("#event-hours");
+
 	var currentDay = $("#currentDay");
 	var timeBlock = $("#time-block");
-	var eventBox = $("#event-box");
 
-	console.log(timeAndDate);
+	currentDay.text(date);
+
+	console.log(date);
 	console.log(time);
 
 	var hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
@@ -46,7 +47,7 @@ $(document).ready(function () {
 		pmHours.addClass("sch-hrs night-hrs");
 		pmHours.attr("value", hours[i]);
 		pmHours.text(hours[i] + "PM");
-		pmBox.append(pmHours);
+		amBox.append(pmHours);
 
 		// Create textarea, added content, then appended to pmBox
 		var event = $("<textarea>");
@@ -56,19 +57,15 @@ $(document).ready(function () {
 		button.css("color", "blue");
 		button.css("float", "right");
 		button.text(hours[i]);
-		pmBox.append(button);
+		amBox.append(button);
 
 		event.css("background-color", "grey");
 		event.css("width", "100%");
 		event.addClass("add-event");
 		event.attr("id", "pm" + hours[i]);
-		pmBox.append(event);
+		amBox.append(event);
 	}
 	amBox.on("click", function () {
-		saveEvent();
-	});
-
-	pmBox.on("click", function () {
 		saveEvent();
 	});
 

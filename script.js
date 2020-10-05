@@ -1,6 +1,9 @@
 $(document).ready(function () {
 	var date = moment().format("L");
 	var timeNow = moment().format("LT");
+	var withinHour = moment().startOf("hour").fromNow();
+	console.log(withinHour);
+
 	var timeSlot = $("#left");
 	var eventDiv = $("#middle");
 	var lockEventBtn = $("#right");
@@ -8,44 +11,47 @@ $(document).ready(function () {
 	$("#currentDay").text(date);
 	$("#currentTime").text(timeNow);
 
-	var hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+	var appointments = [
+		{ timeString: "9AM", timeNumber: 9 },
+		{ timeString: "10AM", timeNumber: 10 },
+		{ timeString: "11AM", timeNumber: 11 },
+		{ timeString: "12PM", timeNumber: 12 },
+		{ timeString: "1PM", timeNumber: 13 },
+		{ timeString: "2PM", timeNumber: 14 },
+		{ timeString: "3AM", timeNumber: 15 },
+		{ timeString: "4PM", timeNumber: 16 },
+		{ timeString: "5PM", timeNumber: 17 },
+	];
 
-	for (let i = 0; i < hours.length; i++) {
-		// Create div, added content, then appended to parent
-		var amHours = $("<div>");
-		amHours.attr("value", hours[i]);
-		amHours.text(hours[i] + "AM");
-		timeSlot.append(amHours);
+	for (let i = 0; i < appointments.length; i++) {
+		var time = appointments[i];
 
-		// Create textarea, added content, then appended to parent
-		var event = $("<textarea>");
-		event.attr("id", "am" + hours[i]);
-		amHours.append(event);
+		var timeSlot = $("<div>");
+		timeSlot.attr("class", "row");
+		var timeSpan = $("<span>");
+		timeSpan.attr("class", "hour col-sm-1");
 
-		//Create button, add content, append to parent
+		timeSpan.text(time.timeString);
+		timeSlot.append(timeSpan);
+		var textContent = $("<textarea>");
+		textContent.attr("class", "description col-sm-10");
+		timeSlot.append(textContent);
 		var button = $("<button>");
+		button.attr("class", "saveBtn col-sm-1");
 		button.text("LOCK");
-		event.append(button);
+		timeSlot.append(button);
+		$("#time-block").append(timeSlot);
+
+		var hourNow = time.timeNumber;
+		if (hourNow === timeNow) {
+			textContent.addClass("present");
+		} else if (hourNow <= timeNow) {
+			textContent.addClass("past");
+		} else {
+			textContent.addClass("future");
+		}
 	}
 
-	for (let i = 0; i < hours.length; i++) {
-		// Create div, added content, then appended to parent
-		var pmHours = $("<div>");
-		pmHours.attr("value", hours[i]);
-		pmHours.text(hours[i] + "PM");
-		timeSlot.append(pmHours);
-
-		// Create textarea, added content, then appended to parent
-		var event = $("<textarea>");
-
-		event.attr("id", "pm" + hours[i]);
-		pmHours.append(event);
-
-		// Create button, add content then append to parent
-		var button = $("<button>");
-		button.text("LOCK");
-		event.append(button);
-	}
 	lockEventBtn.on("click", function () {
 		saveEvent();
 	});

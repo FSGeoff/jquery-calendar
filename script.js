@@ -11,7 +11,7 @@ $(document).ready(function () {
 	$("#currentDay").text(date);
 	$("#currentTime").text(timeNow);
 
-	localStorage.getItem(event);
+	localStorage.getItem("event");
 
 	var appointments = [
 		{ timeString: "9AM", timeNumber: 9 },
@@ -31,18 +31,18 @@ $(document).ready(function () {
 		var timeSlot = $("<div>");
 		timeSlot.attr("class", "row");
 
-		//Create column to hold time
+		//Create column(1) to hold time
 		var timeSpan = $("<span>");
 		timeSpan.attr("class", "hour col-sm-1");
 		timeSpan.text(time.timeString);
 		timeSlot.append(timeSpan);
 
-		//Create column to hold appointment ext
+		//Create column(10) to hold appointment ext
 		var textContent = $("<textarea>");
 		textContent.attr("class", "description col-sm-10");
 		timeSlot.append(textContent);
 
-		//Create save button
+		//Create a column(1) for a save button
 		var button = $("<button>");
 		button.attr("class", "saveBtn col-sm-1");
 		button.text("SAVE");
@@ -61,10 +61,8 @@ $(document).ready(function () {
 		} else {
 			textContent.addClass("future");
 		}
-
-		$(".description").on("click", function () {
-			console.log("event here!");
-		});
+		//Listen for a click from the save button
+		//and save to local storage
 		$(".saveBtn").on("click", function () {
 			console.log("save here");
 			localStorage.setItem("event", textContent.textContent);

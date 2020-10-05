@@ -28,7 +28,7 @@ $(document).ready(function () {
 		button.css("class", "btn btn-info");
 		button.css("color", "blue");
 		button.css("float", "right");
-		button.text(hours[i]);
+		button.text("LOCK");
 		amBox.append(button);
 
 		event.css("background-color", "grey");
@@ -56,7 +56,7 @@ $(document).ready(function () {
 		button.css("class", "btn btn-info");
 		button.css("color", "blue");
 		button.css("float", "right");
-		button.text(hours[i]);
+		button.text("LOCK");
 		amBox.append(button);
 
 		event.css("background-color", "grey");

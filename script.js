@@ -1,12 +1,8 @@
 $(document).ready(function () {
-	var date = moment().format("L");
+	var date = moment().format("LL");
 	var timeNow = moment().format("LT");
 	var withinHour = moment().startOf("hour").fromNow();
 	console.log(withinHour);
-
-	var timeSlot = $("#left");
-	var eventDiv = $("#middle");
-	var lockEventBtn = $("#right");
 
 	$("#currentDay").text(date);
 	$("#currentTime").text(timeNow);
@@ -18,11 +14,11 @@ $(document).ready(function () {
 		{ timeString: "10AM", timeNumber: 10 },
 		{ timeString: "11AM", timeNumber: 11 },
 		{ timeString: "12PM", timeNumber: 12 },
-		{ timeString: "1PM", timeNumber: 1 },
-		{ timeString: "2PM", timeNumber: 2 },
-		{ timeString: "3PM", timeNumber: 3 },
-		{ timeString: "4PM", timeNumber: 4 },
-		{ timeString: "5PM", timeNumber: 5 },
+		{ timeString: "1PM", timeNumber: 13 },
+		{ timeString: "2PM", timeNumber: 14 },
+		{ timeString: "3PM", timeNumber: 15 },
+		{ timeString: "4PM", timeNumber: 16 },
+		{ timeString: "5PM", timeNumber: 17 },
 	];
 
 	for (let i = 0; i < appointments.length; i++) {
@@ -44,8 +40,8 @@ $(document).ready(function () {
 
 		//Create a column(1) for a save button
 		var button = $("<button>");
-		button.attr("class", "saveBtn col-sm-1");
-		button.text("SAVE");
+		button.attr("class", "saveBtn col-sm-1 fas fa-save");
+
 		timeSlot.append(button);
 
 		//Append entire div to container in html
@@ -64,8 +60,9 @@ $(document).ready(function () {
 		//Listen for a click from the save button
 		//and save to local storage
 		$(".saveBtn").on("click", function () {
-			console.log("save here");
-			localStorage.setItem("event", textContent.textContent);
+			var event = $(".description").val();
+			localStorage.setItem("event", event);
+			console.log(event);
 		});
 	}
 });

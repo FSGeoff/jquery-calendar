@@ -1,3 +1,6 @@
+Functionality has been added to the appliction. The site also renders well on a iPhone XR.
+
+
 
 GIVEN I am using a daily planner to create a schedule
 WHEN I open the planner
@@ -11,7 +14,8 @@ THEN I can enter an event
 WHEN I click the save button for that time block
 THEN the text for that event is saved in local storage
 WHEN I refresh the page
-THEN the saved events persist
+THEN the saved events persist***(LOCAL STORAGE IS SAVED IN BROWSER BUT NOT ON PAGE)
+
 ```
 
 

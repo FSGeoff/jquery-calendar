@@ -15,7 +15,7 @@ THEN the saved events persist
 ```
 
 
-![Geoff Nix](jqery-calendar/jQueryCalendar1.png)
+![Geoff Nix](jQueryCalendar1.png)
 ![Geoff Nix](jQueryCalendar2.png)
 ![Geoff Nix](jQueryCalendar3.png)
 ![Geoff Nix](jQueryCalendar4.png)

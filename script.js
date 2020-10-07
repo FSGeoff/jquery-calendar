@@ -2,7 +2,6 @@ $(document).ready(function () {
 	var date = moment().format("LL");
 	var timeNow = moment().format("LT");
 	var withinHour = moment().startOf("hour").fromNow();
-	console.log(withinHour);
 
 	$("#currentDay").text(date);
 	$("#currentTime").text(timeNow);
@@ -33,10 +32,14 @@ $(document).ready(function () {
 		timeSpan.text(time.timeString);
 		timeSlot.append(timeSpan);
 
-		//Create column(10) to hold appointment ext
+		//Create column(10) to hold appointment text
 		var textContent = $("<textarea>");
 		textContent.attr("class", "description col-sm-10");
+		textContent.attr("id", "event-text");
 		timeSlot.append(textContent);
+
+		console.log($(this));
+		console.log(this);
 
 		//Create a column(1) for a save button
 		var button = $("<button>");
@@ -60,7 +63,7 @@ $(document).ready(function () {
 		//Listen for a click from the save button
 		//and save to local storage
 		$(".saveBtn").on("click", function () {
-			var event = $(".description").val();
+			var event = $("#event-text").text;
 			localStorage.setItem("event", event);
 			console.log(event);
 		});

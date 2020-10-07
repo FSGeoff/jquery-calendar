@@ -53,9 +53,15 @@ $(document).ready(function () {
 		//Checks to see current time and adds class accordingly
 		var hourNow = parseInt(time.timeNumber);
 		console.log(hourNow);
-		if (hourNow === parseInt(timeNow)) {
+		if (
+			hourNow === parseInt(timeNow) ||
+			hourNow === parseInt(timeNow) + 12
+		) {
 			textContent.addClass("present");
-		} else if (hourNow <= parseInt(timeNow)) {
+		} else if (
+			hourNow <= parseInt(timeNow) ||
+			hourNow - 12 <= parseInt(timeNow)
+		) {
 			textContent.addClass("past");
 		} else {
 			textContent.addClass("future");
@@ -63,7 +69,7 @@ $(document).ready(function () {
 		//Listen for a click from the save button
 		//and save to local storage
 		$(".saveBtn").on("click", function () {
-			var event = $("#event-text").text;
+			var event = $("textarea").val();
 			localStorage.setItem("event", event);
 			console.log(event);
 		});

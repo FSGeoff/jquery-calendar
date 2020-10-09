@@ -6,7 +6,7 @@ $(document).ready(function () {
 	$("#currentDay").text(date);
 	$("#currentTime").text(timeNow);
 
-	// localStorage.getItem("eventText");
+	localStorage.getItem("event");
 
 	var appointments = [
 		{ timeString: "9AM", timeNumber: 9 },
@@ -35,13 +35,11 @@ $(document).ready(function () {
 		//Create column(10) to hold appointment text
 		var textContent = $("<textarea>");
 		textContent.attr("class", "description col-sm-10");
-		textContent.attr("id", "event-text"[i]);
-		// textContent.text(localStorage.getItem("eventText"[i]));
+		textContent.attr("id", "event-text");
 		timeSlot.append(textContent);
-		console.log(textContent);
-		//Get object back
-		//access objects properties
-		// console.log(JSON.parse(localStorage.getItem("hours")));
+
+		console.log($(this));
+		console.log(this);
 
 		//Create a column(1) for a save button
 		var button = $("<button>");
@@ -54,15 +52,15 @@ $(document).ready(function () {
 
 		//Checks to see current time and adds class accordingly
 		var hourNow = parseInt(time.timeNumber);
-
+		console.log(hourNow);
 		if (
 			hourNow === parseInt(timeNow) ||
 			hourNow === parseInt(timeNow) + 12
 		) {
 			textContent.addClass("present");
 		} else if (
-			hourNow <= parseInt(timeNow) ||
-			hourNow - 12 <= parseInt(timeNow)
+			hourNow < parseInt(timeNow) ||
+			hourNow < parseInt(timeNow) - 12
 		) {
 			textContent.addClass("past");
 		} else {
@@ -70,13 +68,10 @@ $(document).ready(function () {
 		}
 		//Listen for a click from the save button
 		//and save to local storage
-		$("button").on("click", function () {
-			var eventText = $(this).siblings("textarea").val();
-			//what object key are we saving too
-			// localStorage.setItem("eventText", eventText);
-			var hours = { "9AM": "test " };
-			localStorage.setItem("hours", JSON.stringify(hours));
-			// console.log(eventText);
+		$(".saveBtn").on("click", function () {
+			var event = $("textarea").val();
+			localStorage.setItem("event", event);
+			console.log(event);
 		});
 	}
 });

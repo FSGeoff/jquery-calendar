@@ -17,8 +17,8 @@ WHEN I refresh the page
 THEN the saved events persist***(LOCAL STORAGE IS SAVED IN BROWSER BUT NOT ON PAGE)
 
 ```
-![GEOFF NIX](jQCalendar1.png)
-![GEOFF NIX](jQCalendar2.png)
-![GEOFF NIX](jQCalendar3.png)
-![GEOFF NIX](jQCalendar4.png)
+![](jQCalendar1.png)
+![](jQCalendar2.png)
+![](jQCalendar3.png)
+![](jQCalendar4.png)
 
